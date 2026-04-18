@@ -34,7 +34,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <span>{post.readingMinutes} min read</span>
         </div>
         <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-tight">{post.title}</h1>
-        <p className="mt-4 text-lg text-muted leading-relaxed">{post.excerpt}</p>
       </header>
 
       <div

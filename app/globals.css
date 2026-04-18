@@ -59,6 +59,18 @@ body {
   left: 30vw;
   animation: float 24s ease-in-out -6s infinite;
 }
+.aurora .nyse {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 9999px;
+  filter: blur(130px);
+  opacity: 0.22;
+  background: radial-gradient(circle, #e5786f 0%, transparent 60%);
+  bottom: 10vh;
+  left: 5vw;
+  animation: float 28s ease-in-out -14s infinite;
+}
 
 @keyframes float {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -83,7 +95,7 @@ body {
 }
 
 .glow-text {
-  background: linear-gradient(135deg, #7cf0ff 0%, #a78bfa 50%, #f472b6 100%);
+  background: linear-gradient(135deg, #7cf0ff 0%, #a78bfa 45%, #e5786f 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;

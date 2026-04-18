@@ -16,6 +16,7 @@ const config: Config = {
         accent: "#7cf0ff",
         accent2: "#a78bfa",
         accent3: "#f472b6",
+        nyse: "#e5786f",
         muted: "#8a93a6",
       },
       fontFamily: {
@@ -41,6 +42,7 @@ const config: Config = {
       boxShadow: {
         glow: "0 0 60px -15px rgba(124, 240, 255, 0.4)",
         "glow-violet": "0 0 60px -15px rgba(167, 139, 250, 0.5)",
+        "glow-nyse": "0 0 60px -10px rgba(229, 120, 111, 0.55)",
       },
     },
   },

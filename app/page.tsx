@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import BlogCard from "@/components/BlogCard";
 import SubscribeForm from "@/components/SubscribeForm";
+import AboutOperator from "@/components/AboutOperator";
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
 
@@ -28,6 +29,8 @@ export default function HomePage() {
           </div>
         )}
       </section>
+
+      <AboutOperator />
 
       <section id="subscribe" className="max-w-3xl mx-auto px-6 mt-32 text-center">
         <div className="text-xs font-mono text-accent uppercase tracking-widest">/ subscribe</div>

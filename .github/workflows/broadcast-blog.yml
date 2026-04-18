@@ -1,0 +1,57 @@
+name: Broadcast new blog posts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/blog/**'
+  workflow_dispatch:
+    inputs:
+      files:
+        description: 'Space-separated blog file paths to broadcast (e.g. content/blog/foo.mdx)'
+        required: true
+
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect files to broadcast
+        id: files
+        run: |
+          if [ -n "${{ github.event.inputs.files }}" ]; then
+            echo "Manual run. Files: ${{ github.event.inputs.files }}"
+            echo "list=${{ github.event.inputs.files }}" >> "$GITHUB_OUTPUT"
+          else
+            if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+              echo "Branch-create push; skipping to avoid broadcasting backlog."
+              echo "list=" >> "$GITHUB_OUTPUT"
+            else
+              files=$(git diff --diff-filter=A --name-only ${{ github.event.before }} ${{ github.sha }} -- 'content/blog/*.mdx' 'content/blog/*.md' | tr '\n' ' ')
+              echo "Newly added: $files"
+              echo "list=$files" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Set up Node
+        if: steps.files.outputs.list != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        if: steps.files.outputs.list != ''
+        run: npm ci
+
+      - name: Send broadcasts
+        if: steps.files.outputs.list != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_SEGMENT_ID: ${{ secrets.RESEND_SEGMENT_ID }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+        run: node scripts/broadcast-new-posts.mjs ${{ steps.files.outputs.list }}

@@ -31,6 +31,7 @@ Create `.env.local`:
 ANTHROPIC_API_KEY=sk-ant-...
 RESEND_API_KEY=re_...
 RESEND_SEGMENT_ID=...
+RESEND_FROM="futurecfo.ai <hello@futurecfo.ai>"
 NEXT_PUBLIC_SITE_URL=https://futurecfo.ai
 ```
 
@@ -38,9 +39,41 @@ NEXT_PUBLIC_SITE_URL=https://futurecfo.ai
 - **RESEND_API_KEY** and **RESEND_SEGMENT_ID** — create a free account at
   https://resend.com, create a Segment in the dashboard, copy the segment id
   and an API key. Resend migrated from Audiences to Segments — the subscribe
-  route uses the new `segments: [{ id }]` contact-create shape
+  route uses the new `segments: [{ id }]` contact-create shape.
+- **RESEND_FROM** — sender address used for the welcome email and blog-post
+  broadcasts. Supports friendly-name format (`"Name <addr@domain>"`).
 - If `RESEND_*` are missing, `/api/subscribe` logs the email to the server and
-  returns success (useful for dev)
+  returns success (useful for dev).
+
+### ⚠️ You must verify your sending domain in Resend
+
+No email leaves Resend until your domain is verified. Go to Resend →
+**Domains** → add `futurecfo.ai` → add the DKIM/SPF records they show at your
+DNS registrar. Without this, subscribers are recorded but receive nothing.
+
+## Email flows
+
+Two places email gets sent:
+
+1. **Welcome email on subscribe.** `/api/subscribe` creates the Resend contact,
+   then calls `resend.emails.send` with a short "you're on the list" message.
+   Failure to send is logged but returns success to the client — the contact
+   is still captured.
+
+2. **New-post broadcasts** (automated). A GitHub Action at
+   `.github/workflows/broadcast-blog.yml` runs on every push to `main` that
+   touches `content/blog/**`. It detects newly-added post files via
+   `git diff --diff-filter=A`, then `scripts/broadcast-new-posts.mjs` sends
+   one Resend broadcast per new post to your segment.
+
+   **Required GitHub repo secrets** (Settings → Secrets and variables → Actions):
+   - `RESEND_API_KEY`
+   - `RESEND_SEGMENT_ID`
+   - `RESEND_FROM`
+   - `NEXT_PUBLIC_SITE_URL` (optional; defaults to `https://futurecfo.ai`)
+
+   You can also run broadcasts manually from the Actions tab
+   (workflow_dispatch) — useful for re-broadcasting or testing.
 
 ## Writing blog posts
 

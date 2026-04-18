@@ -13,34 +13,28 @@ export default function AboutOperator() {
           <img
             src="/blog-images/nyse.png"
             alt="NYSE floor badge — Christopher McFadden"
-            className="rounded-2xl w-full max-w-sm rotate-[-2deg] shadow-glow-nyse border-2 border-nyse/40"
+            className="rounded-2xl w-full max-w-sm shadow-glow-nyse border-2 border-nyse/40"
           />
-          <div className="mt-3 text-center font-mono text-xs text-muted uppercase tracking-widest">
-            field credentials · floor 11 · nyse
-          </div>
         </div>
 
         {/* copy */}
         <div>
           <div className="text-xs font-mono text-nyse uppercase tracking-widest">/ the operator</div>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-            Before the agents, there was the <span className="text-nyse">floor</span>.
+            <span className="text-nyse">CFO</span>-obsessed guidance and insights.
           </h2>
           <p className="mt-5 text-muted leading-relaxed">
-            I'm Chris McFadden. This is a real photo of me with a real NYSE badge
-            from when markets still closed on a bell. I've spent the years since
-            building and financing operating companies — and now I'm making the
-            case that the CFO is the right hands on the wheel for the next era.
+            Site run by Chris McFadden, who was mugshotted here leaving the
+            NYSE floor. He and his team of advisory CFO&apos;s are constantly
+            innovating on behalf of the CFO role to advocate for this as the
+            single most critical executive function.
           </p>
           <p className="mt-4 text-muted leading-relaxed">
             futurecfo.ai is the working field guide. The essays, the chat, and
             the <Link href="/analyze" className="text-nyse hover:text-accent transition underline decoration-dashed underline-offset-4">analyze tool</Link>{" "}
-            are all one experiment: what does finance look like when software
-            compounds faster than headcount?
+            are all one experiment: how do we leapfrog finance into the agentic
+            age?
           </p>
-          <div className="mt-6 font-mono text-xs text-muted">
-            — signed, still pink about it
-          </div>
         </div>
       </div>
     </section>

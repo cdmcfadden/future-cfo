@@ -9,6 +9,16 @@ export default function HomePage() {
   const posts = getAllPosts().slice(0, 3);
   return (
     <>
+      <div className="max-w-6xl mx-auto px-6 pt-6 pb-2 flex items-center justify-center gap-3 text-sm text-muted">
+        <img
+          src="/blog-images/nyse.png"
+          alt="NYSE badge — Christopher McFadden"
+          className="w-10 h-10 rounded-full object-cover ring-2 ring-nyse/60 shadow-glow-nyse"
+          style={{ objectPosition: "14% center" }}
+        />
+        <span className="font-mono">© {new Date().getFullYear()} futurecfo.ai · chris mcfadden</span>
+      </div>
+
       <Hero />
 
       <section className="max-w-6xl mx-auto px-6 mt-24">

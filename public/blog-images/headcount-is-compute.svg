@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#a78bfa" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#05060a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="txt" x1="0" x2="1">
+      <stop offset="0" stop-color="#f472b6"/>
+      <stop offset="1" stop-color="#7cf0ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#05060a"/>
+  <rect width="1600" height="900" fill="url(#g1)"/>
+
+  <!-- two columns merging -->
+  <g opacity="0.85">
+    <!-- human column -->
+    <g fill="#7cf0ff" opacity="0.85">
+      <rect x="280" y="340" width="80" height="300" rx="6"/>
+      <rect x="380" y="280" width="80" height="360" rx="6" opacity="0.8"/>
+      <rect x="480" y="360" width="80" height="280" rx="6" opacity="0.6"/>
+    </g>
+    <!-- compute column -->
+    <g fill="#f472b6" opacity="0.85">
+      <rect x="1040" y="300" width="80" height="340" rx="6"/>
+      <rect x="1140" y="340" width="80" height="300" rx="6" opacity="0.8"/>
+      <rect x="1240" y="240" width="80" height="400" rx="6" opacity="0.6"/>
+    </g>
+    <!-- equals sign -->
+    <g fill="#a78bfa">
+      <rect x="720" y="440" width="160" height="18" rx="3"/>
+      <rect x="720" y="490" width="160" height="18" rx="3"/>
+    </g>
+  </g>
+
+  <g font-family="ui-sans-serif, -apple-system, system-ui" font-weight="700">
+    <text x="80" y="150" font-size="86" fill="url(#txt)" letter-spacing="-2">headcount ≡ compute</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#7cf0ff" font-size="20" opacity="0.7">
+    <text x="80" y="200">one roster. one ledger.</text>
+    <text x="80" y="820">03 · headcount-is-compute.mdx</text>
+  </g>
+</svg>

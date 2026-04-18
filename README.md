@@ -33,6 +33,7 @@ RESEND_API_KEY=re_...
 RESEND_SEGMENT_ID=...
 RESEND_FROM="futurecfo.ai <hello@futurecfo.ai>"
 NEXT_PUBLIC_SITE_URL=https://futurecfo.ai
+ANALYZE_PASSWORD=<shared password for /analyze>
 ```
 
 - **ANTHROPIC_API_KEY** — from https://console.anthropic.com
@@ -42,6 +43,8 @@ NEXT_PUBLIC_SITE_URL=https://futurecfo.ai
   route uses the new `segments: [{ id }]` contact-create shape.
 - **RESEND_FROM** — sender address used for the welcome email and blog-post
   broadcasts. Supports friendly-name format (`"Name <addr@domain>"`).
+- **ANALYZE_PASSWORD** — shared password for `/analyze` (document upload +
+  financial summary + Q&A). If unset, `/analyze` shows an "offline" notice.
 - If `RESEND_*` are missing, `/api/subscribe` logs the email to the server and
   returns success (useful for dev).
 

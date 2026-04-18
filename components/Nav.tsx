@@ -11,6 +11,7 @@ export default function Nav() {
         <nav className="flex items-center gap-6 text-sm text-muted">
           <Link href="/blog" className="hover:text-white transition">Essays</Link>
           <Link href="/chat" className="hover:text-white transition">Chat</Link>
+          <Link href="/analyze" className="hover:text-white transition">Analyze</Link>
           <Link
             href="/#subscribe"
             className="px-3 py-1.5 rounded-full border border-accent/40 text-accent hover:bg-accent/10 transition"

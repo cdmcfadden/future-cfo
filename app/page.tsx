@@ -9,13 +9,18 @@ export default function HomePage() {
   const posts = getAllPosts().slice(0, 3);
   return (
     <>
-      <div className="max-w-6xl mx-auto px-6 pt-6 pb-2 flex items-center justify-center gap-3 text-sm text-muted">
+      <div className="max-w-6xl mx-auto px-6 pt-5 pb-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted">
         <img
           src="/blog-images/nyse.png"
           alt="NYSE badge — Christopher McFadden"
           className="w-10 h-10 rounded-full object-cover ring-2 ring-nyse/60 shadow-glow-nyse"
           style={{ objectPosition: "14% center" }}
         />
+        <span className="inline-flex items-center gap-2 font-mono">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent shadow-glow" />
+          a thesis on the AI-native enterprise
+        </span>
+        <span className="text-muted/40 hidden sm:inline">·</span>
         <span className="font-mono">© {new Date().getFullYear()} futurecfo.ai · chris mcfadden</span>
       </div>
 

@@ -2,12 +2,8 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 pb-28 px-6">
+    <section className="relative pt-10 pb-24 px-6">
       <div className="max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-line/80 bg-surface/60 text-xs font-mono text-muted mb-8 animate-fade-in">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent shadow-glow" />
-          a thesis on the AI-native enterprise
-        </div>
         <h1 className="text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] animate-fade-in">
           Ushering in the <span className="glow-text">future</span> of finance.
         </h1>
